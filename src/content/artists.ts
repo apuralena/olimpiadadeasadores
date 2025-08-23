@@ -125,7 +125,6 @@ export const artists: Artist[] = [
     description:
       "El Huayra Mujol es una escuela de danzas folclóricas de la localidad de Roberts que nace con el propósito de mantener vivas nuestras tradiciones y transmitirlas a las nuevas generaciones. Con pasión, dedicación y un fuerte sentido de comunidad, forma bailarines y bailarinas que se expresan a través de chacareras, zambas, gatos, escondidos y otros ritmos que son parte de la identidad cultural argentina. Más que un espacio de formación, El Huayra Mujol es un punto de encuentro donde se celebran nuestras raíces, se fortalecen los lazos comunitarios y se comparte el amor por el folclore en cada presentación, dentro y fuera del pueblo.",
     image: "/images/artists/huayra-muyoj.webp",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     socialMedia: {},
   },
   {
