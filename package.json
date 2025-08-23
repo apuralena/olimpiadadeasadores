@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.2.6",
     "@fontsource-variable/alegreya": "^5.2.6",
     "@fontsource/ephesis": "^5.2.6",
     "@fontsource/rubik-dirt": "^5.2.6",
