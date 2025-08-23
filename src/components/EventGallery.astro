@@ -1,0 +1,67 @@
+---
+// src/components/EventGallery.astro
+// Componente para mostrar galería de imágenes del evento pasado
+import GalleryCarousel from "./GalleryCarousel.tsx";
+import { readdir } from "node:fs/promises";
+import { join } from "node:path";
+
+// Función para obtener automáticamente las imágenes de la carpeta gallery
+async function getGalleryImages() {
+  try {
+    const galleryPath = join(process.cwd(), "public", "images", "gallery");
+    const files = await readdir(galleryPath);
+
+    // Filtrar solo archivos de imagen
+    const imageFiles = files
+      .filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file))
+      .sort(); // Ordenar alfabéticamente
+
+    // Generar la estructura de datos para las imágenes
+    return imageFiles.map((file, index) => ({
+      src: `/images/gallery/${file}`,
+      alt: `Imagen del evento de la Olimpiada de Asadores - ${index + 1}`,
+      caption: `Momento del Evento ${index + 1}`,
+    }));
+  } catch (error) {
+    console.warn("No se pudieron cargar las imágenes de la galería:", error);
+    // Fallback a imágenes de ejemplo si no hay carpeta
+    return [
+      {
+        src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=600&fit=crop",
+        alt: "Ejemplo de competencia de asadores",
+        caption: "Competencia Central",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1493770348161-369560ae357d?w=400&h=600&fit=crop",
+        alt: "Ejemplo de shows folklóricos",
+        caption: "Shows Folklóricos",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=600&fit=crop",
+        alt: "Ejemplo de ambiente familiar",
+        caption: "Ambiente Familiar",
+      },
+    ];
+  }
+}
+
+const galleryImages = await getGalleryImages();
+---
+
+<section id='primeraEdicion' data-section class='section scroll-mt-20'>
+  <div class='container text-center'>
+    <h2 class='section-title'>Revivimos la 1.ª Edición</h2>
+    <h3
+      class='text-2xl mb-8 text-[--color-ink]/80 font-ui leading-relaxed max-w-4xl mx-auto'
+    >
+      Mirá cómo fue la primera Olimpiada de Asadores. Una jornada inolvidable
+      que reunió a los mejores parrilleros del país y miles de personas que
+      disfrutaron del mejor asado, folklore y tradición argentina.
+    </h3>
+
+    <!-- Carrusel de imágenes -->
+    <div class='max-w-6xl mx-auto'>
+      <GalleryCarousel client:load images={galleryImages} />
+    </div>
+  </div>
+</section>

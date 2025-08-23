@@ -1,0 +1,77 @@
+---
+import SignupDynamic from "@/components/forms/SignupDynamic";
+import CompetitionCard from "./CompetitionCard.astro";
+
+const COMPETITIONS = [
+  {
+    id: "degustacion_a_ciegas",
+    name: "Degustación a Ciegas",
+    description:
+      "Demostra tu paladar en esta competencia de degustación a ciegas.",
+    image: "/images/competitions/degustacion.webp",
+  },
+  {
+    id: "choripan",
+    name: "Cagao' de hambre",
+    description: "Quien se come el choripán más rápido.",
+    image: "/images/competitions/choripan.webp",
+  },
+  {
+    id: "fotografia",
+    name: "Fotografía",
+    description:
+      "Saca la mejor foto del evento y subiendola con el hashtag #OlimpiadaDeAsadores.",
+    image: "/images/competitions/fotografia.webp",
+  },
+  {
+    id: "trivia",
+    name: "Trivia",
+    description: "Quien sabe más sobre el asado y la cultura argentina🇦🇷.",
+    image: "/images/competitions/trivia.webp",
+  },
+  {
+    id: "fuego_rapido",
+    name: "¡Quien enciende el fuego más rápido?",
+    description:
+      "Demostra tus habilidades de encendido de fuego en esta competencia.",
+    image: "/images/competitions/fuego_rapido.webp",
+  },
+  {
+    id: "campeonato_de_truco",
+    name: "Campeonato de Truco",
+    description: "Competencia de truco por equipos en pareja de a 2.",
+    image: "/images/competitions/campeonato_de_truco.webp",
+  },
+];
+---
+
+<section id='competencias' data-section class='section scroll-mt-20'>
+  <div class='container text-center'>
+    <h2 class='section-title mb-4'>Competencias</h2>
+    <h3 class='mb-4 text-3xl'>
+      La Olimpiada de Asadores no es solo para mirar… <span class='font-bold'
+        >¡también es para participar!</span
+      >
+    </h3>
+    <p class='mb-4 text-2xl'>
+      Este año sumamos juegos y desafíos para que cualquiera que venga al evento
+      pueda ser parte de la fiesta. <span class='font-bold'>Elegí</span> tu competencia
+      favorita y anotate acá mismo. <span class='font-bold'
+        >La gloria del asado puede ser tuya.</span
+      >
+    </p>
+    <div class='my-10'>
+      <h2 class='max-w-prose mx-auto text-xl my-6'>
+        Elegí la competencia y completá tus datos para participar.
+      </h2>
+      <SignupDynamic client:idle />
+    </div>
+    <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+      {
+        COMPETITIONS.map((competition) => (
+          <CompetitionCard key={competition.id} {...competition} />
+        ))
+      }
+    </div>
+  </div>
+</section>

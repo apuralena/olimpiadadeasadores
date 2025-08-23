@@ -1,0 +1,65 @@
+---
+import { title } from "process";
+import { event } from "../content/event";
+import TicketCard from "./TicketCard.astro";
+import { object } from "astro:schema";
+const price = new Intl.NumberFormat("es-AR", {
+  style: "currency",
+  currency: event.currency,
+}).format(event.price);
+
+const tickets = [
+  {
+    title: "Entrada General",
+    description: "Acceso a todas las competencias y actividades.",
+    price: price,
+    oldprice: "$20.000,00",
+    includes: "Incluye 1 bebida a elección.",
+    ticketUrl: "https://etickets.com.ar/olimpiada-de-asadores-1750697057/",
+    whatsappUrl: "https://w.app/sfyvka",
+  },
+  {
+    title: "Pack Familiar 4x3 ",
+    description:
+      "Acceso a todas las competencias y actividades para toda la familia.",
+    price: "$48.000,00",
+    oldprice: "$80.000,00",
+    includes: "Incluye 4 bebidas a elección.",
+    ticketUrl: "https://etickets.com.ar/olimpiada-de-asadores-1750697057/",
+    whatsappUrl: "https://w.app/sfyvka",
+  },
+];
+---
+
+<section id='entradas' data-section class='section scroll-mt-20'>
+  <div class='container text-center'>
+    <h2 class='section-title'>Entradas</h2>
+    <div class='mt-4 grid grid-cols-1 sm:grid-cols-2 gap-8'>
+      {tickets.map((ticket) => <TicketCard {...ticket} />)}
+    </div>
+    <div
+      class='mt-4 flex flex-col sm:flex-row items-center justify-center gap-3'
+    >
+    </div>
+    <div class='mt-6 p-4 bg-green-50 border border-green-200 rounded-lg'>
+      <div class='flex items-center justify-center gap-2'>
+        <svg
+          class='w-5 h-5 text-green-600'
+          fill='currentColor'
+          viewBox='0 0 20 20'
+        >
+          <path
+            fill-rule='evenodd'
+            d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+            clip-rule='evenodd'></path>
+        </svg>
+        <h3 class='text-lg font-semibold text-green-800'>
+          ¡Menores de 10 años ingresan gratis!
+        </h3>
+      </div>
+      <p class='text-sm text-green-700 mt-1'>
+        Los niños menores de 10 años no requieren entrada
+      </p>
+    </div>
+  </div>
+</section>

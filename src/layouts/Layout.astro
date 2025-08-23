@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import Nav from "@/components/Nav";
+import { ViewTransitions } from "astro:transitions";
+
+export interface Props {
+  title: string;
+  description?: string;
+  textColor?: string;
+}
+
+const {
+  title,
+  textColor,
+  description = "Competencia central de asadores, shows folklóricos y danzas en vivo, competencias para el público y gastronomía.",
+} = Astro.props;
+---
+
+<html lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <title>{title}</title>
+    <meta name='description' content={description} />
+    <link rel='icon' href='/logo.webp' type='image/webp' />
+
+    <!-- View Transitions -->
+    <ViewTransitions />
+  </head>
+  <body class='min-h-dvh paper-bg font-ui'>
+    <Nav client:load textColor={textColor} />
+
+    <!-- Contenido dinámico -->
+    <slot />
+
+    <footer class='section text-sm opacity-70'>
+      <div class='container text-center'>© 2025 Olimpiada de Asadores</div>
+    </footer>
+  </body>
+</html>

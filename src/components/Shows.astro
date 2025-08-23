@@ -1,0 +1,85 @@
+---
+import { event } from "../content/event";
+import { getArtistBySlug } from "../content/artists";
+---
+
+<section id='shows' data-section class='section scroll-mt-20'>
+  <div class='container text-center'>
+    <h2 class='section-title'>Shows en vivo</h2>
+    <h2 class='mt-2 text-2xl'>
+      Folklore en vivo para acompañar el calor del fuego.
+      <h2 class='block'>
+        Canciones que nos conectan con nuestras raíces y hacen latir el alma
+        criolla.
+      </h2>
+    </h2>
+    <div
+      class='mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'
+    >
+      {
+        event.shows.map((name) => {
+          // Crear slug del nombre con manejo completo de caracteres especiales
+          const slug = name
+            .toLowerCase()
+            .replace(/[áàâäã]/g, "a")
+            .replace(/[éèêë]/g, "e")
+            .replace(/[íìîï]/g, "i")
+            .replace(/[óòôöõ]/g, "o")
+            .replace(/[úùûü]/g, "u")
+            .replace(/[ñ]/g, "n")
+            .replace(/[^a-z0-9]/g, "-")
+            .replace(/-+/g, "-")
+            .replace(/^-|-$/g, "");
+
+          // Buscar si existe el artista en nuestros datos
+          const artist = getArtistBySlug(slug);
+
+          return artist ? (
+            <a
+              href={`/${artist.slug}`}
+              class='group bg-white/80 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden block'
+            >
+              {/* Imagen del artista */}
+              <div class='aspect-square overflow-hidden'>
+                <picture>
+                  <source
+                    media='(max-width: 768px)'
+                    srcset={`/images/artists/mobile/${artist.slug}.webp`}
+                  />
+                  <img
+                    src={artist.image}
+                    alt={artist.name}
+                    class='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
+                    transition:name={`artist-${artist.slug}-image`}
+                    loading='lazy'
+                  />
+                </picture>
+              </div>
+
+              {/* Información del artista */}
+              <div class='p-3'>
+                <h3
+                  class='font-ui font-semibold text-sm text-[--color-ink] group-hover:text-[--color-primary] transition-colors'
+                  transition:name={`artist-${artist.slug}-name`}
+                >
+                  {name}
+                </h3>
+                {artist.showTime && (
+                  <p class='text-xs text-[--color-ink]/70 mt-1'>
+                    {artist.showTime}
+                  </p>
+                )}
+              </div>
+            </a>
+          ) : (
+            <div class='bg-white/50 rounded-xl shadow-sm p-4 flex items-center justify-center min-h-[120px]'>
+              <span class='font-ui text-sm text-[--color-ink]/70 text-center'>
+                {name}
+              </span>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
