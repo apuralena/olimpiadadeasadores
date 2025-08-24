@@ -11,7 +11,7 @@ const faqData: FAQItem[] = [
     id: "entrada",
     question: "¿Qué incluye la entrada?",
     answer:
-      "Incluye 1 bebida a elección (fernet, cerveza o gaseosa) y acceso completo al evento con todos los shows en vivo, competencias y actividades gastronómicas.",
+      "Incluye 1 bebida a elección (cerveza, fernet, vino, gaseosa o agua) y acceso completo al evento con todos los shows en vivo, competencias y actividades gastronómicas.",
   },
   {
     id: "lluvia",
@@ -23,7 +23,7 @@ const faqData: FAQItem[] = [
     id: "horarios",
     question: "¿Cuáles son los horarios del evento?",
     answer:
-      "El evento comienza a las 09:00 y finaliza a las 19:00. Los shows en vivo se desarrollan durante toda la jornada con horarios específicos que se anuncian el día del evento.",
+      "El evento comienza a las 09:00 y finaliza a las 19:00 aproximadamente. Los shows en vivo se desarrollan durante toda la jornada con horarios específicos que se anuncian el día del evento.",
   },
   {
     id: "comida",
@@ -41,7 +41,7 @@ const faqData: FAQItem[] = [
     id: "menores",
     question: "¿Pueden ingresar menores de edad?",
     answer:
-      "Sí, es un evento familiar. Los menores de 12 años ingresan sin costo acompañados de un adulto con entrada. Menores de 12 a 17 años pagan entrada reducida.",
+      "Sí, es un evento familiar. Los menores de 10 años ingresan sin costo acompañados de un adulto con entrada.",
   },
 ];
 
