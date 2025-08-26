@@ -146,7 +146,7 @@ export default function Faq() {
           <p className='text-sm text-[--color-ink]/80'>
             ¿Tenés otra pregunta? Escribinos por{" "}
             <a
-              href='https://wa.me/54911XXXXXXXX'
+              href='https://api.whatsapp.com/send?phone=542355642309'
               target='_blank'
               rel='noopener noreferrer'
               className='text-[--color-primary] hover:underline font-medium'
@@ -155,7 +155,7 @@ export default function Faq() {
             </a>{" "}
             o seguinos en{" "}
             <a
-              href='#'
+              href='https://www.instagram.com/olimpiadadeasadores/'
               target='_blank'
               rel='noopener noreferrer'
               className='text-[--color-primary] hover:underline font-medium'
