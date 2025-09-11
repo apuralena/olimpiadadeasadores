@@ -17,6 +17,7 @@ export const IndividualSchema = z.object({
     "fotografia",
     "trivia",
     "fuego_rapido",
+    "sapucay",
   ]),
   fullName: z.string().min(3, "Nombre completo demasiado corto"),
   phone: z.string().regex(phoneRegex, "Teléfono inválido"),

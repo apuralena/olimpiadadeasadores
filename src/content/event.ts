@@ -55,5 +55,6 @@ export const event = {
     "📸 Mejor fotografía (#OlimpiadadeAsadores)",
     "🇦🇷 Trivia argenta",
     "🔥 Encender el fuego más rápido",
+    "🗣️ El mejor Sapucay",
   ],
 };
