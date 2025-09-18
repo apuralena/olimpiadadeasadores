@@ -1,7 +1,7 @@
 // src/content/event.ts
 export const event = {
   name: "Olimpiada de Asadores — 2.ª Edición",
-  dateISO: "2025-09-20",
+  dateISO: "2025-09-27",
   start: "09:00",
   end: "19:00",
   locationName: "Catalinas Club",

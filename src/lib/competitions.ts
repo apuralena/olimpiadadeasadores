@@ -1,11 +1,11 @@
 export type CompetitionId =
-  | "degustacion"
   | "choripan"
   | "fotografia"
   | "trivia"
   | "fuego_rapido"
   | "truco"
-  | "sapucay";
+  | "sapucay"
+  | "fondo_blanco_buller";
 
 export type CompetitionKind = "individual" | "truco";
 
@@ -14,7 +14,6 @@ export const COMPETITIONS: Array<{
   label: string;
   kind: CompetitionKind;
 }> = [
-  { id: "degustacion", label: "Degustación a ciegas", kind: "individual" },
   { id: "choripan", label: "Cagao’ de hambre (choripán)", kind: "individual" },
   { id: "fotografia", label: "Mejor fotografía", kind: "individual" },
   { id: "trivia", label: "Trivia argenta", kind: "individual" },
@@ -29,4 +28,9 @@ export const COMPETITIONS: Array<{
     kind: "individual",
   },
   { id: "truco", label: "Campeonato de Truco (parejas)", kind: "truco" },
+  {
+    id: "fondo_blanco_buller",
+    label: "Fondo Blanco Buller",
+    kind: "individual",
+  },
 ];

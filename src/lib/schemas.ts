@@ -12,12 +12,12 @@ const base = {
 export const IndividualSchema = z.object({
   ...base,
   competitionId: z.enum([
-    "degustacion",
     "choripan",
     "fotografia",
     "trivia",
     "fuego_rapido",
     "sapucay",
+    "fondo_blanco_buller",
   ]),
   fullName: z.string().min(3, "Nombre completo demasiado corto"),
   phone: z.string().regex(phoneRegex, "Teléfono inválido"),
