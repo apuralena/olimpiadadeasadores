@@ -1,11 +1,11 @@
 // src/content/event.ts
 export const event = {
   name: "Olimpiada de Asadores — 2.ª Edición",
-  dateISO: "2025-09-27",
+  dateISO: "2025-11-08",
   start: "09:00",
   end: "19:00",
   locationName: "Catalinas Club",
-  address: "Azopardo 1600, CABA",
+  address: "PI Y MARGALL 671, CABA, Argentina",
   ticketUrl: "https://etickets.com.ar/olimpiada-de-asadores-1750697057/",
   whatsappUrl:
     "https://wa.me/54911XXXXXXXX?text=Quiero%20entradas%20para%20la%20Olimpiada%20de%20Asadores",
@@ -37,12 +37,12 @@ export const event = {
   ],
   shows: [
     "La Quijada",
-    "Las Etcheberry",
+    // "Las Etcheberry",
     "Juanchy Osuna",
     "Lucho Ciganda",
     "Portres",
     "Runamacha",
-    "Rodrigo Figueroa",
+    // "Rodrigo Figueroa",
     "Seres",
     "Huayra Muyoj",
     "Lautaro Calvimonte & Gustty Pérez",

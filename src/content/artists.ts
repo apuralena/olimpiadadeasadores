@@ -28,19 +28,19 @@ export const artists: Artist[] = [
       instagram: "la.quijada",
     },
   },
-  {
-    id: "2",
-    name: "Las Etcheberry",
-    slug: "las-etcheberry",
-    genre: "Folclore",
-    description:
-      "Las Etcheberry son un dúo de folclore argentino integrado por las Mellis Nachi y Ampi Etcheberry. Con guitarra y voz, reviven clásicos de nuestro cancionero popular con una frescura única, transmitiendo emoción y autenticidad en cada interpretación. Su propuesta combina la tradición del folclore con la calidez de un estilo íntimo y cercano, logrando conectar tanto con el público en vivo como con la creciente comunidad que las acompaña en redes sociales. Cada presentación de Las Etcheberry es una invitación a compartir la música, las raíces y la pasión por nuestra cultura.",
-    image: "/images/artists/las-etcheberry.webp",
-    video: "https://www.youtube.com/embed/ONsVykiB5No",
-    socialMedia: {
-      instagram: "lasetcheberry",
-    },
-  },
+  // {
+  //   id: "2",
+  //   name: "Las Etcheberry",
+  //   slug: "las-etcheberry",
+  //   genre: "Folclore",
+  //   description:
+  //     "Las Etcheberry son un dúo de folclore argentino integrado por las Mellis Nachi y Ampi Etcheberry. Con guitarra y voz, reviven clásicos de nuestro cancionero popular con una frescura única, transmitiendo emoción y autenticidad en cada interpretación. Su propuesta combina la tradición del folclore con la calidez de un estilo íntimo y cercano, logrando conectar tanto con el público en vivo como con la creciente comunidad que las acompaña en redes sociales. Cada presentación de Las Etcheberry es una invitación a compartir la música, las raíces y la pasión por nuestra cultura.",
+  //   image: "/images/artists/las-etcheberry.webp",
+  //   video: "https://www.youtube.com/embed/ONsVykiB5No",
+  //   socialMedia: {
+  //     instagram: "lasetcheberry",
+  //   },
+  // },
   {
     id: "3",
     name: "Juanchy Osuna",
@@ -93,17 +93,17 @@ export const artists: Artist[] = [
       instagram: "runamacha",
     },
   },
-  {
-    id: "7",
-    name: "Rodrigo Figueroa",
-    slug: "rodrigo-figueroa",
-    genre: "Folclore",
-    description:
-      "Rodrigo Figueroa desde Miguel Riglos, La Pampa, les trae nuestra música desde el centro del país con ganas de verlos bailar, interpretará varios estilos dentro de nuestro cancionero de folklore bien argentino que nos identifica.",
-    image: "/images/artists/rodrigo-figueroa.webp",
-    video: "https://www.youtube.com/embed/cfDci0k0ukg?si=XA3AcuFtSApRl4DH",
-    socialMedia: {},
-  },
+  // {
+  //   id: "7",
+  //   name: "Rodrigo Figueroa",
+  //   slug: "rodrigo-figueroa",
+  //   genre: "Folclore",
+  //   description:
+  //     "Rodrigo Figueroa desde Miguel Riglos, La Pampa, les trae nuestra música desde el centro del país con ganas de verlos bailar, interpretará varios estilos dentro de nuestro cancionero de folklore bien argentino que nos identifica.",
+  //   image: "/images/artists/rodrigo-figueroa.webp",
+  //   video: "https://www.youtube.com/embed/cfDci0k0ukg?si=XA3AcuFtSApRl4DH",
+  //   socialMedia: {},
+  // },
   {
     id: "8",
     name: "Seres",
