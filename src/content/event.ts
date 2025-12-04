@@ -1,12 +1,12 @@
 // src/content/event.ts
 export const event = {
   name: "Olimpiada de Asadores — 2.ª Edición",
-  dateISO: "2025-11-08",
-  start: "09:00",
-  end: "19:00",
-  locationName: "Catalinas Club",
-  address: "PI Y MARGALL 671, CABA, Argentina",
-  ticketUrl: "https://etickets.com.ar/olimpiada-de-asadores-1750697057/",
+  dateISO: "2025-12-27",
+  start: "18:00",
+  // end: "19:00",
+  locationName: "Liga de Padres de Familia",
+  address: "Acceso Roberts",
+  ticketUrl: "https://etickets.com.ar/pre-olimpiada-de-asadores/",
   whatsappUrl:
     "https://wa.me/54911XXXXXXXX?text=Quiero%20entradas%20para%20la%20Olimpiada%20de%20Asadores",
   price: 16000,

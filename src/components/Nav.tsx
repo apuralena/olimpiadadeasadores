@@ -5,12 +5,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const LINKS = [
   { href: "#conoce_mas", label: "Conocer más" },
   { href: "#central", label: "Compentencia Central" },
-  { href: "#shows", label: "Shows" },
+  // { href: "#shows", label: "Shows" },
   { href: "#competencias", label: "Competencias" },
-  { href: "#primeraEdicion", label: "Primera Edición" },
+  { href: "#segundaEdicion", label: "Segunda Edición" },
   { href: "#entradas", label: "Entradas" },
   { href: "#sponsors", label: "Sponsors" },
-  { href: "#faq", label: "FAQ" },
+  // { href: "#faq", label: "FAQ" },
 ];
 
 const TICKET_URL = "#entradas";
@@ -116,7 +116,7 @@ export default function Nav({ textColor = "text-white" }: NavProps) {
           ))}
           <li>
             <a href={TICKET_URL} className='btn-primary text-sm'>
-              Comprar
+              Adquir entradas
             </a>
           </li>
         </ul>
