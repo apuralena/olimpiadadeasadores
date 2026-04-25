@@ -1,0 +1,24 @@
+---
+import { Studio } from "sanity";
+import config from "../../studio/sanity.config";
+
+// El token debe estar disponible
+const studioConfig = {
+  ...config,
+  token: import.meta.env.SANITY_API_TOKEN || import.meta.env.PUBLIC_SANITY_API_TOKEN,
+};
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — Olimpiada de Asadores</title>
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <Studio config={studioConfig} />
+  </body>
+</html>

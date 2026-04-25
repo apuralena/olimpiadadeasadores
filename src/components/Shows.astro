@@ -1,86 +1,66 @@
 ---
-import { event } from "../content/event";
-import { getArtistBySlug } from "../content/artists";
+import { sanityClient, queries } from "@/lib/sanity";
+
+// Fetch shows from Sanity - now includes images
+const shows = await sanityClient.fetch(queries.shows).catch(() => []);
+
+const defaultShows = [
+  { name: "La Quijada", image: "" },
+  { name: "Juanchy Osuna", image: "" },
+  { name: "Lucho Ciganda", image: "" },
+];
+
+const showsList = shows.length > 0
+  ? shows.map((s: any) => ({
+      name: s.artist,
+      image: s.photo
+    }))
+  : defaultShows;
 ---
 
 <section id='shows' data-section class='section scroll-mt-20'>
-  <div class='container text-center'>
-    <h2 class='section-title'>Shows en vivo</h2>
-    <h2 class='mt-2 text-2xl'>
-      Folklore en vivo para acompañar el calor del fuego.
-      <h2 class='block'>
-        Canciones que nos conectan con nuestras raíces y hacen latir el alma
-        criolla.
-      </h2>
-    </h2>
-    <div class='mt-6'>
-      <h2 class='text-7xl'>PROXIMAMENTE..</h2>
-    </div>
-    <!-- <div class='mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'>
-      {
-        event.shows.map((name) => {
-          // Crear slug del nombre con manejo completo de caracteres especiales
-          const slug = name
-            .toLowerCase()
-            .replace(/[áàâäã]/g, "a")
-            .replace(/[éèêë]/g, "e")
-            .replace(/[íìîï]/g, "i")
-            .replace(/[óòôöõ]/g, "o")
-            .replace(/[úùûü]/g, "u")
-            .replace(/[ñ]/g, "n")
-            .replace(/[^a-z0-9]/g, "-")
-            .replace(/-+/g, "-")
-            .replace(/^-|-$/g, "");
+  <div class='container'>
+    <h2 class='section-title text-center text-crema'>Reviví los shows de la Olimpiada</h2>
+    <p class='text-xl text-center mb-10 text-crema/70 max-w-2xl mx-auto'>
+      Artistas que acompañaron el fuego con la mejor música en vivo.
+    </p>
+    
+    {showsList.length > 0 ? (
+    <div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+      {showsList.map((show: any, index: number) => (
+        <div class='group relative bg-sombra/40 rounded-xl overflow-hidden border border-fuego/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(194,65,12,0.3)] hover:border-fuego/60'>
+          
+          <div class='absolute inset-0 bg-gradient-to-br from-fuego/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 
-          // Buscar si existe el artista en nuestros datos
-          const artist = getArtistBySlug(slug);
-
-          return artist ? (
-            <a
-              href={`/${artist.slug}`}
-              class='group bg-white/80 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden block'
-            >
-              {/* Imagen del artista */}
-              <div class='aspect-square overflow-hidden'>
-                <picture>
-                  <source
-                    media='(max-width: 768px)'
-                    srcset={`/images/artists/mobile/${artist.slug}.webp`}
-                  />
-                  <img
-                    src={artist.image}
-                    alt={artist.name}
-                    class='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
-                    transition:name={`artist-${artist.slug}-image`}
-                    loading='lazy'
-                  />
-                </picture>
-              </div>
-
-              {/* Información del artista */}
-              <div class='p-3'>
-                <h3
-                  class='font-ui font-semibold text-sm text-[--color-ink] group-hover:text-[--color-primary] transition-colors'
-                  transition:name={`artist-${artist.slug}-name`}
-                >
-                  {name}
-                </h3>
-                {artist.showTime && (
-                  <p class='text-xs text-[--color-ink]/70 mt-1'>
-                    {artist.showTime}
-                  </p>
-                )}
-              </div>
-            </a>
-          ) : (
-            <div class='bg-white/50 rounded-xl shadow-sm p-4 flex items-center justify-center min-h-[120px]'>
-              <span class='font-ui text-sm text-[--color-ink]/70 text-center'>
-                {name}
-              </span>
+          {show.image ? (
+            <div class='w-full aspect-square overflow-hidden relative'>
+              <img 
+                src={show.image} 
+                alt={show.name}
+                class='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
+                loading='lazy'
+              />
+              <div class='absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-transparent opacity-80' />
             </div>
-          );
-        })
-      }
-    </div> -->
+          ) : (
+            <div class='w-full aspect-square flex items-center justify-center bg-sombra/60 relative'>
+              <span class='text-crema/30 font-ui italic'>Sin imagen</span>
+              <div class='absolute inset-0 bg-gradient-to-t from-carbon to-transparent opacity-80' />
+            </div>
+          )}
+          
+          <div class='absolute bottom-0 inset-x-0 p-4 text-center transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
+            <h3 class='font-ui text-lg font-bold text-crema group-hover:text-fuego transition-colors drop-shadow-md'>
+              {show.name}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+    ) : (
+    <div class='text-center py-12'>
+      <p class='text-crema/50 font-ui italic text-lg'>Próximamente anunciaremos la grilla de artistas...</p>
+    </div>
+    )}
   </div>
 </section>

@@ -7,7 +7,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Unicorn Display (archivo local en /public/fonts) */
+/* Unicorn Display */
 @font-face {
   font-family: "Unicorn Display";
   src: url("/fonts/DavidMatos-Unicorn-Display.otf") format("opentype");
@@ -16,118 +16,229 @@
   font-style: normal;
 }
 
-/* Tokens Tailwind v4 */
 @theme {
-  --color-primary: #E4572E;
-  --color-primary-600: #B53A0A;
-  --color-ink: #1F1F1F;
-  --color-wood-light: #D0B089;
-  --color-wood-dark: #8C6239;
-  --color-parchment: #E9DDC8;
-  --color-accent: #2BA1B8;
+  --color-fuego: #C2410C;
+  --color-fuego-600: #9A3412;
+  --color-carbon: #1C1917;
+  --color-carbon-900: #0C0A09;
+  --color-pampa: #166534;
+  --color-pampa-600: #14532D;
+  --color-oro: #CA8A04;
+  --color-crema: #FEF3C7;
+  --color-sombra: #292524;
+
+  --color-primary: #C2410C;
+  --color-primary-600: #9A3412;
+  --color-ink: #FEF3C7;
+  --color-parchment: #0C0A09;
+  --color-accent: #166534;
 
   --font-display: "Rubik Dirt", system-ui, sans-serif;
   --font-title: "Unicorn Display", serif;
   --font-ui: 'Alegreya Variable', serif;
   --font-script: "Ephesis", cursive;
-
-  --radius: 0.5rem;
 }
 
-/* --- Paper viejo simple (sin conic/espirales) --- */
-.paper-bg {
-  position: relative;
-  color: var(--color-ink);
-
-  /* Base papel viejo con leves variaciones */
-  background:
-    radial-gradient(900px 600px at 12% 18%, rgba(120, 92, 58, .10), transparent 70%),
-    radial-gradient(800px 550px at 88% 20%, rgba(99, 78, 49, .08), transparent 70%),
-    radial-gradient(800px 550px at 15% 85%, rgba(120, 92, 58, .07), transparent 70%),
-    radial-gradient(800px 550px at 90% 80%, rgba(99, 78, 49, .07), transparent 70%),
-
-    /* rayas/fibras simples */
-    repeating-linear-gradient(
-      0deg,
-      rgba(120, 92, 58, .03) 0 3px,
-      transparent 3px 6px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(160, 130, 90, .025) 0 2px,
-      transparent 2px 5px
-    ),
-
-    /* color base */
-    linear-gradient(135deg, #EADFC8, #E6D6BE);
-  
-  background-attachment: fixed;
+a, button, select, option, input {
+  @apply cursor-pointer;
 }
 
-/* Bordes oscuros / viñeta */
-.paper-bg::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  background:
-    radial-gradient(600px 250px at 0% 0%,     rgba(60,45,30,.15), transparent 70%),
-    radial-gradient(600px 250px at 100% 0%,   rgba(60,45,30,.15), transparent 70%),
-    radial-gradient(600px 250px at 0% 100%,   rgba(60,45,30,.15), transparent 70%),
-    radial-gradient(600px 250px at 100% 100%, rgba(60,45,30,.15), transparent 70%),
-
-    /* viñeta general */
-    radial-gradient(140% 100% at 50% 50%, transparent 60%, rgba(0,0,0,.08) 100%);
-}
-
-/* ------------------------------------------------------------- */
-
-a, button, select, option, input{
-  @apply cursor-pointer
-}
-
-/* Utilidades tipográficas */
 .font-ui { font-family: var(--font-ui); }
 .font-display { font-family: var(--font-display); }
 .font-title { font-family: var(--font-title); }
 .font-script { font-family: var(--font-script); }
 
-/* Base mobile + helpers */
 .section { @apply px-4 py-10 sm:py-14; }
 .section-title { @apply font-ui text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6; }
 
-/* Botón CTA */
+/* Botón CTA - estilo fuego */
 .btn-primary {
   display: inline-flex !important;
   align-items: center;
   gap: 0.5rem;
   border-radius: 0.75rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   font-weight: 700;
   letter-spacing: 0.025em;
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
   color: white;
-  transition: background-color 0.15s ease-in-out;
+  box-shadow: 
+    0 0 20px rgba(194, 65, 12, 0.3),
+    0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+@theme {
+  --color-fuego: #C2410C;
+  --color-fuego-600: #9A3412;
+  --color-carbon: #1C1917;
+  --color-carbon-900: #0C0A09;
+  --color-pampa: #166534;
+  --color-pampa-600: #14532D;
+  --color-oro: #CA8A04;
+  --color-crema: #FEF3C7;
+  --color-sombra: #292524;
+
+  --color-primary: #C2410C;
+  --color-primary-600: #9A3412;
+  --color-ink: #FEF3C7;
+  --color-parchment: #0C0A09;
+  --color-accent: #166534;
+
+  --font-display: "Rubik Dirt", system-ui, sans-serif;
+  --font-title: "Unicorn Display", serif;
+  --font-ui: 'Alegreya Variable', serif;
+  --font-script: "Ephesis", cursive;
+}
+
+/* Animación y diseño de las partículas en layout absoluto */
+.fuego-particulas {
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 120%, rgba(194, 65, 12, 0.9) 1.5px, transparent 3px),
+    radial-gradient(circle at 30% 120%, rgba(250, 204, 21, 1) 2px, transparent 4px),
+    radial-gradient(circle at 50% 120%, rgba(194, 65, 12, 0.8) 1.5px, transparent 3px),
+    radial-gradient(circle at 70% 120%, rgba(250, 204, 21, 0.9) 2.5px, transparent 5px),
+    radial-gradient(circle at 20% 120%, rgba(255, 255, 255, 0.8) 1.5px, transparent 3px),
+    radial-gradient(circle at 90% 120%, rgba(220, 38, 38, 0.8) 2px, transparent 4px);
+  background-size: 100% 100%;
+  animation: chispas-layout 12s linear infinite;
+}
+
+@keyframes chispas-layout {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+a, button, select, option, input {
+  @apply cursor-pointer;
+}
+
+.font-ui { font-family: var(--font-ui); }
+.font-display { font-family: var(--font-display); }
+.font-title { font-family: var(--font-title); }
+.font-script { font-family: var(--font-script); }
+
+.section { @apply px-4 py-10 sm:py-14; }
+.section-title { @apply font-ui text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6; }
+
+/* Botón CTA - estilo fuego */
+.btn-primary {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  
+  /* Gradiente fuego */
+  background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+  color: white;
+  
+  /* Box shadow con glow */
+  box-shadow: 
+    0 0 20px rgba(194, 65, 12, 0.3),
+    0 4px 6px rgba(0, 0, 0, 0.3);
+  
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brillo animado antes del hover */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: btn-shine 3s ease-in-out infinite;
+}
+
+@keyframes btn-shine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
 .btn-primary:hover {
-  background-color: var(--color-primary-600);
+  /* Efecto fuego más intenso */
+  background: linear-gradient(135deg, #DC2626 0%, #C2410C 100%);
+  box-shadow: 
+    0 0 30px rgba(194, 65, 12, 0.5),
+    0 0 50px rgba(194, 65, 12, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px) scale(1.02);
 }
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
 .btn-primary.block {
   display: flex !important;
   justify-content: center;
   width: 100%;
 }
 
-/* Animación fade-in suave */
+/* Animaciones varias */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in {
-  animation: fade-in 0.8s ease-out;
-  opacity: 0;
+  animation: fade-in 0.8s ease-out forwards;
 }
+
+@keyframes pulse-fuego {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(194, 65, 12, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(194, 65, 12, 0.5);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-slow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+/* Clases de utilidad para animaciones */
+.animate-pulse-fuego {
+  animation: pulse-fuego 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-slow 3s ease-in-out infinite;
+}
+
+/* Delay helpers */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
 
 .section-bg { @apply bg-[--color-parchment] text-[--color-ink]; }
 
@@ -247,7 +358,7 @@ a, button, select, option, input{
 
 @layer base {
   * { @apply border-border outline-ring/50; }
-  body { @apply bg-background text-foreground; }
+  body { @apply text-foreground bg-transparent; }
 }
 
 /* Animaciones FAQ */

@@ -1,0 +1,17 @@
+{
+  "root": ".",
+  "api": {
+    "projectId": "tmbwm07z",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/structure",
+    "@sanity/vision"
+  ],
+  "env": {
+    "api": {
+      "projectId": "tmbwm07z",
+      "dataset": "production"
+    }
+  }
+}

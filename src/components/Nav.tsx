@@ -7,13 +7,12 @@ const LINKS = [
   { href: "#central", label: "Compentencia Central" },
   // { href: "#shows", label: "Shows" },
   { href: "#competencias", label: "Competencias" },
-  { href: "#segundaEdicion", label: "Segunda Edición" },
-  { href: "#entradas", label: "Entradas" },
+  { href: "#galeria", label: "Galería" },
   { href: "#sponsors", label: "Sponsors" },
   // { href: "#faq", label: "FAQ" },
 ];
 
-const TICKET_URL = "#entradas";
+// const TICKET_URL = "#entradas";
 
 function scrollWithOffset(selector: string) {
   const el = document.querySelector(selector) as HTMLElement | null;
@@ -74,7 +73,7 @@ export default function Nav({ textColor = "text-white" }: NavProps) {
   };
 
   return (
-    <nav className='fixed inset-x-0 top-0 z-50 bg-[--color-parchment]/90 backdrop-blur-2xl border-b border-black/5'>
+    <nav className='fixed inset-x-0 top-0 z-50 bg-carbon/95 backdrop-blur-2xl border-b border-fuego/20'>
       <div className='mx-auto max-w-7xl px-4 h-14 flex items-center justify-between'>
         {/* Logo */}
         <a href='/' className='flex items-center gap-2'>
@@ -114,11 +113,11 @@ export default function Nav({ textColor = "text-white" }: NavProps) {
               </a>
             </li>
           ))}
-          <li>
+          {/* <li>
             <a href={TICKET_URL} className='btn-primary text-sm'>
               Adquir entradas
             </a>
-          </li>
+          </li> */}
         </ul>
 
         {/* Mobile: Sheet controlado */}
@@ -126,13 +125,13 @@ export default function Nav({ textColor = "text-white" }: NavProps) {
           <SheetTrigger asChild>
             <button
               aria-label='Abrir menú'
-              className='md:hidden inline-flex items-center justify-center size-10 rounded-xl border border-black/10'
+              className='md:hidden inline-flex items-center justify-center size-10 rounded-xl border border-fuego/20 bg-sombra/40 text-crema hover:bg-fuego/20 transition-colors'
             >
               <svg
                 viewBox='0 0 24 24'
                 className='size-6'
                 fill='none'
-                stroke='#fff'
+                stroke='currentColor'
                 strokeWidth='2'
               >
                 <path d='M3 6h18M3 12h18M3 18h18' />
@@ -143,30 +142,32 @@ export default function Nav({ textColor = "text-white" }: NavProps) {
           <SheetContent
             side='right'
             hideClose={true}
-            className='w-[85%] max-w-xs bg-[--color-parchment] p-6 border-none'
+            className='w-[85%] max-w-xs bg-sombra/60 backdrop-blur-xl p-6 border-l border-fuego/20'
           >
-            <nav className='mt-4'>
-              <ul className='flex flex-col gap-4 font-ui text-lg'>
+            <div className="flex justify-end mb-6">
+              <button 
+                onClick={() => setOpen(false)}
+                className="p-2 text-crema/70 hover:text-fuego transition-colors"
+                aria-label="Cerrar menú"
+              >
+                <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <nav className='mt-2'>
+              <ul className='flex flex-col gap-6 font-ui text-xl'>
                 {LINKS.map((l) => (
-                  <li key={l.href}>
+                  <li key={l.href} className="border-b border-fuego/10 pb-4">
                     <a
                       href={l.href}
                       onClick={handleMobileAnchor(l.href)}
-                      className={`block py-2 text-white`}
+                      className={`block text-crema hover:text-fuego transition-colors drop-shadow-md`}
                     >
                       {l.label}
                     </a>
                   </li>
                 ))}
-                <li className='pt-2'>
-                  <a
-                    href={TICKET_URL}
-                    onClick={() => setOpen(false)} // cerrar también al ir a comprar
-                    className='btn-primary block w-full text-center'
-                  >
-                    Comprar entradas
-                  </a>
-                </li>
               </ul>
             </nav>
           </SheetContent>

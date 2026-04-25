@@ -1,5 +1,41 @@
 ---
-import { event } from "../content/event";
+import { sanityClient, queries, urlFor } from '@/lib/sanity'
+
+// Fetch sponsors from Sanity
+const sponsors = await sanityClient.fetch(queries.sponsors).catch(() => [])
+
+const defaultSponsors = [
+  {
+    name: 'Malbicho',
+    image: '/sponsors/malbicho.webp',
+    href: 'http://www.malbichowines.com/',
+  },
+  {
+    name: 'Buller',
+    image: '/sponsors/buller.webp',
+    href: 'https://bullerbrewingco.com/',
+  },
+  {
+    name: 'Ñuke',
+    image: '/sponsors/ñuke.webp',
+    href: 'https://productosnuke.com.ar/',
+  },
+  {
+    name: 'Catalinas Club',
+    image: '/sponsors/catalinas-club.webp',
+    href: 'https://catalinasclub.com.ar/',
+  },
+]
+
+const sponsorsList =
+  sponsors.length > 0
+    ? sponsors.map((s: any) => ({
+        name: s.name,
+        image: s.logo ? urlFor(s.logo).width(200).url() : s.logo,
+        href: s.website,
+        tier: s.tier,
+      }))
+    : defaultSponsors
 ---
 
 <section id='sponsors' data-section class='section scroll-mt-20'>
@@ -8,7 +44,7 @@ import { event } from "../content/event";
 
     <div class='mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6'>
       {
-        event.sponsors.map((s) => (
+        sponsorsList.map((s: any) => (
           <div
             class='group rounded-2xl shadow-md p-6 flex flex-col items-center justify-center
                  border border-black/5 transition-all hover:shadow-lg hover:scale-105'
@@ -24,7 +60,7 @@ import { event } from "../content/event";
                 alt={s.name}
                 class='w-32 h-32 object-contain mb-3 transition-transform group-hover:scale-110'
               />
-              <span class='text-sm font-semibold text-gray-800'>{s.name}</span>
+              <span class='text-sm font-semibold'>{s.name}</span>
             </a>
           </div>
         ))

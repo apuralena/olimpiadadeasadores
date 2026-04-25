@@ -1,8 +1,12 @@
 ---
 import SignupDynamic from "@/components/forms/SignupDynamic";
 import CompetitionCard from "./CompetitionCard.astro";
+import { sanityClient, queries } from "@/lib/sanity";
 
-const COMPETITIONS = [
+// Fetch competitions from Sanity
+const competitions = await sanityClient.fetch(queries.competitions).catch(() => []);
+
+const defaultCompetitions = [
   {
     id: "choripan",
     name: "Cagao' de hambre",
@@ -48,32 +52,32 @@ const COMPETITIONS = [
     image: "/images/competitions/fondo_blanco_buller.webp",
   },
 ];
+
+// Use Sanity data or fallback
+const competitionsList = competitions.length > 0 
+  ? competitions.map((c: any) => ({
+      id: c.slug,
+      name: c.name,
+      description: c.description,
+      image: c.image || "/images/competitions/default.webp",
+      icon: c.icon
+    }))
+  : defaultCompetitions;
 ---
 
 <section id='competencias' data-section class='section scroll-mt-20'>
   <div class='container text-center'>
     <h2 class='section-title mb-4'>Competencias</h2>
-    <h3 class='mb-4 text-3xl'>
-      La Olimpiada de Asadores no es solo para mirar… <span class='font-bold'
-        >¡también es para participar!</span
-      >
+    <h3 class='mb-4 text-3xl text-center max-w-2xl mx-auto'>
+      La Olimpiada no es solo para mirar… <span class='font-bold text-fuego'
+        >¡también es para participar!</span>
     </h3>
-    <p class='mb-4 text-2xl'>
-      Este año sumamos juegos y desafíos para que cualquiera que venga al evento
-      pueda ser parte de la fiesta. <span class='font-bold'>Elegí</span> tu competencia
-      favorita y anotate acá mismo. <span class='font-bold'
-        >La gloria del asado puede ser tuya.</span
-      >
+    <p class='mb-8 text-xl text-center max-w-3xl mx-auto text-crema/70'>
+      Competencias para todo el mundo. Elegí la tuya y animate a competir.
     </p>
-    <!-- <div class='my-10'>
-      <h2 class='max-w-prose mx-auto text-xl my-6'>
-        Elegí la competencia y completá tus datos para participar.
-      </h2>
-      <SignupDynamic client:idle />
-    </div> -->
-    <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+    <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
       {
-        COMPETITIONS.map((competition) => (
+        competitionsList.map((competition: any) => (
           <CompetitionCard key={competition.id} {...competition} />
         ))
       }

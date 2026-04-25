@@ -1,15 +1,26 @@
 ---
-const { name, description, image } = Astro.props;
+const { name, description, image, icon } = Astro.props;
 ---
 
 <div
-  class='bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl'
+  class='group relative bg-sombra/50 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border border-fuego/20 hover:border-fuego/50'
 >
-  <div class='w-full h-48 overflow-hidden'>
-    <img src={image} alt={name} class='w-full h-full object-cover' />
+  <!-- Glow effect al hover -->
+  <div class='absolute inset-0 bg-gradient-to-br from-fuego/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+  
+  <div class='w-full h-48 overflow-hidden relative'>
+    <img src={image} alt={name} class='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' />
+    <!-- Overlay oscuro -->
+    <div class='absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-transparent' />
   </div>
-  <div class='p-6'>
-    <h2 class='text-xl font-semibold text-gray-800 mb-4'>{name}</h2>
-    <p class='text-gray-600 leading-relaxed'>{description}</p>
+  
+  <div class='p-5 relative'>
+    {icon && <span class='text-3xl absolute top-3 right-4'>{icon}</span>}
+    <h2 class='text-lg font-bold text-crema mb-2 group-hover:text-fuego transition-colors'>
+      {name}
+    </h2>
+    <p class='text-crema/70 leading-relaxed text-sm'>
+      {description}
+    </p>
   </div>
 </div>

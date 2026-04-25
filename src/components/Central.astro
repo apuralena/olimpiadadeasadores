@@ -5,48 +5,38 @@
       <h3
         class='text-2xl lg:text-3xl font-semibold text-[--color-ink] leading-relaxed'
       >
-        Los mejores asadores de la zona se enfrentan en una competencia única,
-        donde la tradición, el fuego y el sabor se combinan para definir al gran
-        campeón del asado.
+        Los mejores asadores del país compitiendo por ser el campeón definitivo.
       </h3>
     </div>
 
-    <!-- Layout texto + mapa -->
+    <!-- Layout texto + imagen -->
     <div class='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
-      <!-- Texto -->
-      <div class='order-2 lg:order-1'>
-        <h3
-          class='text-xl lg:text-2xl font-medium text-[--color-ink] leading-relaxed mb-6'
-        >
-          Representantes de <span class='font-bold text-[--color-primary]'
-            >toda la región</span
-          >
-          llegan con sus costumbres, sabores y estilos de asado, mostrando la diversidad
-          que nos une en torno a la misma pasión.
-        </h3>
-        <div class='space-y-4 text-lg text-[--color-ink]/80'>
-          <p>
-            Maestros del asado de distintos rincones de la zona se reúnen para
-            compartir su arte, técnicas y pasión por la carne al fuego lento.
-            Una verdadera fiesta de aromas y brasas.
-          </p>
-        </div>
+      <!-- Imagen a la izquierda -->
+      <div class='order-1 lg:order-1 flex justify-center'>
+        <img
+          src='/central.webp'
+          alt='Competencia Central'
+          class='w-full max-w-md rounded-xl shadow-lg'
+        />
       </div>
 
-      <!-- Mapa -->
-      <div class='order-1 lg:order-2 flex justify-center'>
-        <div class='relative'>
-          <img
-            src='/maparoberts.png'
-            alt='Mapa de Argentina mostrando las 8 provincias participantes'
-            class='h-64 md:h-80 lg:h-96 w-auto drop-shadow-lg transition-transform hover:scale-105 duration-300'
-          />
-
-          <div
-            class='absolute -inset-2 bg-gradient-to-r from-[--color-primary]/10 to-[--color-accent]/10 rounded-lg -z-10 blur-sm'
-          >
-          </div>
-        </div>
+      <!-- Texto a la derecha -->
+      <div class='order-2 lg:order-2'>
+        <p class='text-lg text-[--color-ink]/80 leading-relaxed mb-4'>
+          20 de los mejores asadores del país se enfrentan en la competencia más
+          esperada. Cada uno muestra su técnica, estilo y pasión por el arte de
+          la parrilla.
+        </p>
+        <p class='text-lg text-[--color-ink]/80 leading-relaxed mb-4'>
+          Un jurado especializado evalúa cada asado considerando:
+          <span class='font-bold'
+            >cocción, sabor, presentación y creatividad</span
+          >.
+        </p>
+        <p class='text-lg text-[--color-ink]/80 leading-relaxed'>
+          El campeón se lleva el reconhecimento como el mejor asador de la
+          Olimpiada.
+        </p>
       </div>
     </div>
   </div>
