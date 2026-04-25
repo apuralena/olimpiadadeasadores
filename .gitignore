@@ -1,5 +1,8 @@
 # build output
 dist/
+# Vercel deployment output (local only, do NOT commit)
+.vercel/
+
 # generated types
 .astro/
 
